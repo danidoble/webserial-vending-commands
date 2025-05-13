@@ -48,7 +48,6 @@ type sendCustomCodeOptions = {
   code?: Array<number>;
 };
 
-
 type eventsConfigOptions = {
   machineChannel?: number;
   event?: number | string | null;
@@ -164,7 +163,7 @@ class Jofemar {
       0x02,
       0x30,
       0x30,
-      machineChannel,
+      128 + machineChannel,
       cart ? 0x4d : 0x56,
       tray,
       channel,
@@ -179,7 +178,7 @@ class Jofemar {
       0x02,
       0x30,
       0x30,
-      machineChannel,
+      128 + machineChannel,
       0x4d,
       0x80,
       0x80,
@@ -457,7 +456,7 @@ class Jofemar {
     const scales = { celsius: 0x43, fahrenheit: 0x46 };
     if (!scales[scale])
       throw new Error(
-        `Invalid scale, valid scales are 'c' for celsius and 'f' for fahrenheit`,
+        `Invalid scale, valid scales are 'celsius' and 'fahrenheit'`,
       );
     return Jofemar.program({
       param1: 0x67,
@@ -825,7 +824,7 @@ class Jofemar {
     machineChannel = 1,
     event = null,
     enable = true,
-  } : eventsConfigOptions= {}): Uint8Array | Array<string> | string {
+  }: eventsConfigOptions = {}): Uint8Array | Array<string> | string {
     if (null === event) throw new Error("Invalid event");
     const value = enable ? 0x31 : 0x30;
     return Jofemar.instance.build([

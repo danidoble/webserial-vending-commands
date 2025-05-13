@@ -153,7 +153,7 @@ class PinPax {
     const data = JSON.stringify({ action: "EXIT" });
     return PinPax.instance.build(data);
   }
-  
+
   static init(): Uint8Array {
     const data = JSON.stringify({ action: "INIT" });
     return PinPax.instance.build(data);

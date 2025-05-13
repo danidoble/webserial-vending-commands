@@ -490,9 +490,11 @@ class Boardroid {
     return Boardroid.instance.build(arr);
   }
 
-  static customCode(code: Array<number|string>): Uint8Array | Array<string> | string {
-    if(typeof code[0] === "string") {
-        code = code.map((item) => parseInt(item as string, 16));
+  static customCode(
+    code: Array<number | string>,
+  ): Uint8Array | Array<string> | string {
+    if (typeof code[0] === "string") {
+      code = code.map((item) => parseInt(item as string, 16));
     }
     const arr = Boardroid.instance.boardroidCheckSum(
       new Uint8Array(code as number[]),
