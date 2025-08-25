@@ -25,8 +25,8 @@ class Relay {
   static deactivate(channel: number = 1) {
     return Relay.connection(channel);
   }
-  static activate() {
-    return Relay.instance.build([0xa0, 0x01, 0x01, 0xa2]);
+  static activate(channel: number = 1) {
+    return Relay.instance.build([0xa0, channel, 0x01, 0xa2]);
   }
   static custom(data: Uint8Array | Array<number> | string | ArrayBuffer) {
     return Relay.instance.build(data);
