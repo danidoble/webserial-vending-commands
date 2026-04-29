@@ -158,6 +158,16 @@ class PinPax {
     const data = JSON.stringify({ action: "INIT" });
     return PinPax.instance.build(data);
   }
+
+  static stop(): Uint8Array {
+    const data = JSON.stringify({ action: "STOP" });
+    return PinPax.instance.build(data);
+  }
+
+  static verifyNetwork(): Uint8Array {
+    const data = JSON.stringify({ action: "CHECKINTERNET" });
+    return PinPax.instance.build(data);
+  }
 }
 
 PinPax.instance = new PinPax();
