@@ -174,8 +174,8 @@ class Boardroid {
       new Uint8Array([
         0xf1,
         0xc0,
-        txStatus,
         txScrow,
+        txStatus,
         0x00,
         0x00,
         0x00,
